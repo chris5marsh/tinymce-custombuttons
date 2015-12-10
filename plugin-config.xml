@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<plugin-config>
+
+    <!-- Name of the Plugin. This must be the same as the folder name that the plugin resides in -->
+    <name>custombuttons</name>
+
+    <!-- If set to "false" the plugin will not be loaded by TERMINALFOUR SiteManager -->
+    <enabled>true</enabled>
+    <toolbar>
+        <icons>
+
+             <!-- Set to "true" if the icons should be grouped by a "|" on the TinyMce editor toolbar -->
+             <include-separator>false</include-separator>
+
+             <!-- Set preference for what Toolbar row, icons should appear on. This allows the user to force an icon to appear, for example, on the first toolbar row, rather than the last one. 0 indicates no preference -->
+             <row-order>0</row-order>
+
+             <!-- Set preference for where on a Toolbar row, icons should appear on. 0 indicates no preference -->
+             <cell-order>0</cell-order>
+
+             <!-- List the icon names here. A plugin may have zero, one or more entries here. -->
+             <!--icon>IconName</icon-->
+
+        </icons>
+    </toolbar>
+
+    <!-- Any additional information, either mandatory or optional, should be listed here. Wrap with a <![CDATA[ … ]]> if the data contains any illegal XML characters like ">" "<" and "&". -->
+    <extra-information></extra-information>
+</plugin-config>

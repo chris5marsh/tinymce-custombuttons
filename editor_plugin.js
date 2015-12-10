@@ -41,39 +41,17 @@
       // Check if it's in the replacements array
       if (!replacements[editorName]) return;
 
-      // Check if it's already been through this process!
-      if (ed.settings["theme_custombuttons"] === true) return;
-
-      // Run after initialisation
-      ed.onInit.add(function(ed){
-
-        // Replace the necessary values
-        var settings = jQuery.extend(true, {}, ed.settings);
-
-        console.log(settings);
-
-        /*/ Remove this plugin from the settings so it doesn't recurse
-        // Not needed - flag set in settings["theme_custombuttons"]
-        var plugins = settings.plugins.split(',');
-        jQuery.each(plugins, function(i, plugin) {
-          if (plugin.trim() === 'custombuttons') {
-            plugins.splice(i, 1);
-          }
-        });
-        settings.plugins = plugins.join(',');
-        */
+      // Run before rendering
+      ed.onBeforeRenderUI.add(function(ed, cm) {
 
         jQuery.each(replacements[editorName], function(key, value) {
-          settings[key] = value;
+          ed.theme.settings[key] = value;
         });
         // Remove buttons that have been added manually?
-        settings["theme_advanced_buttons1_add"] = false;
-        settings["theme_advanced_buttons2_add"] = false;
-        settings["theme_advanced_buttons3_add"] = false;
-        settings["theme_custombuttons"] = true;
+        ed.theme.settings["theme_advanced_buttons1_add"] = false;
+        ed.theme.settings["theme_advanced_buttons2_add"] = false;
+        ed.theme.settings["theme_advanced_buttons3_add"] = false;
 
-        console.log(settings);
-        //tinymce.init(settings);
       });
 
     },

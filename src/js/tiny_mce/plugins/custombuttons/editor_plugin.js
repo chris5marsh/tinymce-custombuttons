@@ -1,4 +1,5 @@
 (function() {
+
   // Load plugin specific language pack
   tinymce.PluginManager.requireLangPack('custombuttons');
 
@@ -13,24 +14,7 @@
      */
     init : function(ed, url) {
 
-      // JSON object - which editors should we update?
-      var replacements = {
-        "CaptionText": {
-          "theme_advanced_buttons1":"bold,italic,|,t4section,link,unlink,|,undo,redo",
-          "theme_advanced_buttons2":false,
-          "theme_advanced_buttons3":false
-        },
-        "SimpleText": {
-          "theme_advanced_buttons1":"bold,italic,|,cut,copy,paste,|,pastetext,pasteword,selectall,|,link,unlink",
-          "theme_advanced_buttons2":"search,replace,|,bullist,numlist,|,undo,redo,|,charmap,fullscreen,anchor,code,t4section,t4media,thirdlight,t4spellcheck,t4cleanup",
-          "theme_advanced_buttons3":false,
-        },
-        "CompleteText": {
-          "theme_advanced_buttons1":"bold,italic,|,styleselect,formatselect,|,cut,copy,paste,|,pastetext,pasteword,selectall,|,link,unlink",
-          "theme_advanced_buttons2":"search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,hr,|,sub,sup,|,charmap,fullscreen,anchor,code,t4section,t4media,t4spellcheck,t4cleanup",
-          "theme_advanced_buttons3":"tablecontrols",
-        }
-      };
+      var replacements = ed.getParam("custombuttons_replacements");
 
       // What's the classname prefixed with?
       var prefix = 't4_content_element_';
@@ -48,9 +32,9 @@
           ed.theme.settings[key] = value;
         });
         // Remove buttons that have been added manually?
-        ed.theme.settings["theme_advanced_buttons1_add"] = false;
-        ed.theme.settings["theme_advanced_buttons2_add"] = false;
-        ed.theme.settings["theme_advanced_buttons3_add"] = false;
+        ed.theme.settings.theme_advanced_buttons1_add = false;
+        ed.theme.settings.theme_advanced_buttons2_add = false;
+        ed.theme.settings.theme_advanced_buttons3_add = false;
 
       });
 
@@ -68,7 +52,7 @@
         author : 'Chris Marsh, University of York',
         authorurl : 'https://www.york.ac.uk',
         infourl : 'https://www.york.ac.uk',
-        version : "1.0"
+        version : "1.1"
       };
     }
   });

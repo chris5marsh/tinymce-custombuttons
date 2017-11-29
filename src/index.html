@@ -1,0 +1,109 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="author" content="University of York">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>University of York</title>
+
+  <link rel=”openorg” href="https://www.york.ac.uk/.well-known/profile.rdf"/>
+  <link rel="search" type="application/opensearchdescription+xml" title="University of York" href="https://www.york.ac.uk/static/1.5/opensearch.xml">
+
+  <link rel="shortcut icon" href="https://www.york.ac.uk/static/1.5/img/favicon.ico">
+  <link rel="icon" type="image/x-icon" href="https://www.york.ac.uk/static/1.5/img/favicon.ico">
+
+  <link rel="stylesheet" href="https://www.york.ac.uk/static/1.5/css/styles.min.css">
+
+  <script src="https://www.york.ac.uk/static/1.5/js/modernizr.min.js"></script>
+  <script src="https://www.york.ac.uk/static/1.5/js/app.min.js"></script>
+  <script src="js/tiny_mce/tiny_mce.js"></script>
+  <script>
+    jQuery.getJSON("http://localhost:1723/custombuttons.json", function(replacements) {
+      console.log(replacements);
+      tinyMCE.init({
+        mode : "textareas",
+        plugins: "custombuttons",
+        custombuttons_replacements: replacements
+      });
+    }).fail(function(err) {
+      console.log('Load failed');
+      tinyMCE.init({
+        mode : "textareas"
+      });
+
+    });
+  </script>
+
+  <!-- Typekit script -->
+  <script src="//use.typekit.net/dvj8rpp.js"></script>
+  <script>try{Typekit.load();}catch(e){}</script>
+
+</head>
+
+<body>
+
+  <a href="#Main-Content" class="o-skip-link">Skip to content</a>
+
+  <header class="c-main-header" role="banner">
+    <div class="o-wrapper o-grid">
+      <div class="o-grid__row">
+        <div class="o-grid__box o-grid__box--full">
+          <h2 class="c-main-header__title"><a href="https://www.york.ac.uk/"><img class="c-main-header__logo" src="https://www.york.ac.uk/static/1.5/img/logo.svg" alt="University of York"></a></h2>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main nav -->
+  <nav class="c-nav c-nav--main" role="navigation" id="Main-Navigation">
+    <ul class="c-nav__list c-nav__list--structural">
+      <li class="c-nav__item"><a href="https://www.york.ac.uk/study/">Study</a></li>
+      <li class="c-nav__item"><a href="https://www.york.ac.uk/research/">Research</a></li>
+      <li class="c-nav__item"><a href="https://www.york.ac.uk/business/">Business</a></li>
+      <li class="c-nav__item"><a href="https://www.york.ac.uk/about">About</a></li>
+      <li class="c-nav__item"><a href="https://www.york.ac.uk/global/">Global</a></li>
+      <li class="c-nav__item"><a href="https://www.york.ac.uk/news-and-events/news/">News</a></li>
+      <li class="c-nav__item"><a href="https://www.york.ac.uk/news-and-events/events">Events</a></li>
+    </ul>
+  </nav>
+
+  <div class="o-wrapper o-wrapper--main o-grid" id="Main-Content">
+    <div class="o-grid__row o-grid__row--default">
+      <div class="o-grid__box o-grid__box--quarter">
+      </div>
+      <div class="o-grid__box o-grid__box--half">
+        <textarea id="t4_content_element_CaptionText" style="width:100%; height:250px;"></textarea>
+        <p></p>
+      </div>
+      <div class="o-grid__box o-grid__box--quarter">
+      </div>
+    </div>
+  </div>
+
+  <footer class="c-footer-main" role="contentinfo">
+    <div class="o-grid o-wrapper">
+      <div class="o-grid__row">
+        <div class="o-grid__box o-grid__box--quarter">
+          <p>
+            <a href="https://twitter.com/uniofyork" aria-label="Follow us on Twitter"><i class="c-icon c-icon--twitter c-icon--2x c-icon--fw" title="Follow us on Twitter" aria-hidden="true"></i></a>
+            <a  href="https://www.facebook.com/universityofyork" aria-label="Like us on Facebook"><i class="c-icon c-icon--facebook c-icon--2x c-icon--fw" title="Like us on Facebook" aria-hidden="true"></i></a>
+            <a href="https://instagram.com/uniofyork" aria-label="Follow us on Instagramr"><i class="c-icon c-icon--instagram c-icon--2x  c-icon--fw" title="Follow us on Instagram" aria-hidden="true"></i></a>
+            <a  href="http://www.youtube.com/universityofyorkuk" aria-label="Watch our videos on YouTube"><i class="c-icon c-icon--youtube c-icon--2x c-icon--fw" title="Watch our videos on YouTube" aria-hidden="true"></i></a>
+          </p>
+        </div>
+        <div class="o-grid__box o-grid__box--half">
+          <p>&copy; University of York <br /> <a href="https://www.york.ac.uk/about/legal-statements/">Legal statements</a> | <a href="https://www.york.ac.uk/about/legal-statements/#tab-5">Privacy and cookies</a></p>
+        </div>
+        <div class="o-grid__box o-grid__box--quarter">
+
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

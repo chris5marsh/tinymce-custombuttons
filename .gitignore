@@ -1,1 +1,11 @@
 .DS_Store
+
+# Ignore all subdirectories except src/js/tiny_mce/plugins/custombuttons
+src/js/*
+!src/js/tiny_mce
+
+src/js/tiny_mce/*
+!src/js/tiny_mce/plugins
+
+src/js/tiny_mce/plugins/*
+!src/js/tiny_mce/plugins/custombuttons

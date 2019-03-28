@@ -21,19 +21,9 @@
   <script src="https://www.york.ac.uk/static/1.5/js/app.min.js"></script>
   <script src="js/tiny_mce/tiny_mce.js"></script>
   <script>
-    jQuery.getJSON("http://localhost:1723/custombuttons.json", function(replacements) {
-      console.log(replacements);
-      tinyMCE.init({
-        mode : "textareas",
-        plugins: "custombuttons",
-        custombuttons_replacements: replacements
-      });
-    }).fail(function(err) {
-      console.log('Load failed');
-      tinyMCE.init({
-        mode : "textareas"
-      });
-
+    tinyMCE.init({
+      mode : "textareas",
+      plugins: "custombuttons"
     });
   </script>
 

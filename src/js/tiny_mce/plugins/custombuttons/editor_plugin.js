@@ -14,7 +14,7 @@
      */
     init : function(ed, url) {
 
-      var replacements = ed.getParam("custombuttons_replacements");
+      var replacements = {};
 
       // What's the classname prefixed with?
       var prefix = 't4_content_element_';
@@ -22,19 +22,37 @@
       // Remove prefix
       var editorName = ed.id.substr(prefix.length);
 
-      // Check if it's in the replacements array
-      if (!replacements[editorName]) return;
+      ed.onPreInit.add(function(ed) {
+        console.log('PreInit: ' + ed.id);
+      });
+
+      // Run after rendering
+      ed.onPostRender.add(function(ed) {
+        console.log('PostRender: ',ed);
+        jQuery.getJSON("http://localhost:1723/custombuttons.json", function(data) {
+          replacements = data;
+          // Check if it's in the replacements array
+          if (!replacements[editorName]) return;
+
+          jQuery.each(replacements[editorName], function(key, value) {
+            ed.theme.settings[key] = value;
+          });
+          // Remove buttons that have been added manually?
+          ed.theme.settings.theme_advanced_buttons1_add = false;
+          ed.theme.settings.theme_advanced_buttons2_add = false;
+          ed.theme.settings.theme_advanced_buttons3_add = false;
+
+          ed.theme.renderUI();
+
+          console.log('Data loaded', ed.theme);
+
+        });
+      });
 
       // Run before rendering
       ed.onBeforeRenderUI.add(function(ed, cm) {
 
-        jQuery.each(replacements[editorName], function(key, value) {
-          ed.theme.settings[key] = value;
-        });
-        // Remove buttons that have been added manually?
-        ed.theme.settings.theme_advanced_buttons1_add = false;
-        ed.theme.settings.theme_advanced_buttons2_add = false;
-        ed.theme.settings.theme_advanced_buttons3_add = false;
+        console.log('BeforeRenderUI: ' + ed.id);
 
       });
 
